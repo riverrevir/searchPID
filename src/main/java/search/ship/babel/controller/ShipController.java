@@ -20,4 +20,5 @@ public class ShipController {
     public String symbol(String symbol) throws Exception {
         return shipService.symbolSearch(symbol);
     }
+
 }

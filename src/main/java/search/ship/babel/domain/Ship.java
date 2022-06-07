@@ -7,27 +7,30 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity(name="ship")
+@Entity(name = "ship")
 public class Ship {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ship_number")
+    @Column(name = "Number")
     private Long number;
 
-    @Column(name = "ship_pid")
+    @Column(name = "Pid")
     private String pid;
 
-    @Column(name = "ship_project")
+    @Column(name = "Project")
     private String project;
 
-    @Column(name = "ship_blueprint")
+    @Column(name = "ShipName")
+    private String ShipName;
+
+    @Column(name = "Blueprint")
     private String blueprint;
 
-    @Column(name = "ship_p-name")
-    private String p_name;
+    @Column(name = "PName")
+    private String PName;
 
-    @Column(name = "ship_img-src")
-    private String img_src;
+    @Column(name = "ImgSrc")
+    private String ImgSrc;
 
-    
+
 }

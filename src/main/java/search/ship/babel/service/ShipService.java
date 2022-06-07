@@ -14,7 +14,7 @@ public class ShipService {
 
     @Transactional
     public String symbolSearch(String symbol) throws Exception {
-        Ship ship = this.shipRepository.findByp_name(symbol).orElseThrow(() -> new Exception("해당 심볼이 없습니다."));
-        return ship.getP_name();
+        Ship ship = this.shipRepository.findByPName(symbol).orElseThrow(() -> new Exception("해당 심볼이 없습니다."));
+        return ship.getPName();
     }
 }
