@@ -29,4 +29,5 @@ public class Ship {
     @Column(name = "ship_img-src")
     private String img_src;
 
+    
 }
