@@ -1,27 +1,44 @@
 package search.ship.babel.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import search.ship.babel.domain.Ship;
+import search.ship.babel.dto.ShipInfoRequest;
+import search.ship.babel.dto.ShipInfoResponse;
 import search.ship.babel.repository.ShipRepository;
+import search.ship.babel.repository.ShipRepositorySupport;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
+@Transactional
 @Service
 public class ShipService {
     private final ShipRepository shipRepository;
+
+    private final ShipRepositorySupport shipRepositorySupport;
+
+    /**
+     * todo
+     */
+//    @Transactional(readOnly = true)
+//    public String projectSearch(String project) {
+//        Ship ship = this.shipRepository.findByProject(project).orElseThrow(() -> new IllegalArgumentException("해당 프로젝트가 없습니다"));
 //
-//    @Transactional
-//    public String symbolSearch(String symbol){
-//        Ship ship = this.shipRepository.findByPName(symbol).orElseThrow(() -> new Exception("해당 심볼이 없습니다."));
-//        return ship.getPName();
+//        return null;
 //    }
 
-    @Transactional
-    public String projectSearch(String project){
-        Ship ship=this.shipRepository.findByProject(project).orElseThrow(()->new IllegalArgumentException("해당 프로젝트가 없습니다"));
+    @Transactional(readOnly = true)
+    public ShipInfoResponse findShipInfoByCategory(ShipInfoRequest request) {
+        final String largeCategory = request.getLargeCategory();
+        final String middleCategory = request.getMiddleCategory();
+        final String subCategory = request.getSubCategory();
 
-        return ship.g
+        List<Ship> ship = shipRepositorySupport.findByCategory(largeCategory, middleCategory, subCategory);
+        return ShipInfoResponse.from(ship);
     }
+
 }
