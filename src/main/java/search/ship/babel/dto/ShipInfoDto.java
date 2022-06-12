@@ -1,11 +1,14 @@
 package search.ship.babel.dto;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import search.ship.babel.domain.Ship;
 
+@Getter
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ShipInfoDto {
     private String symbolName;
 

@@ -2,6 +2,7 @@ package search.ship.babel.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 

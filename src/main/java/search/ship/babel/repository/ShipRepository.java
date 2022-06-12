@@ -12,7 +12,4 @@ import java.util.Optional;
 
 public interface ShipRepository extends JpaRepository<Ship, Long> {
 
-//    public static final String Find_Project="SELECT PName,";
-    Optional<Ship> findByPName(String symbol);
-    Optional<Ship> findByProject(String project);
 }
