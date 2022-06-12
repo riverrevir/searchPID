@@ -21,16 +21,15 @@ public class Ship {
     private String project;
 
     @Column(name = "ShipName")
-    private String ShipName;
+    private String shipName;
 
     @Column(name = "Blueprint")
     private String blueprint;
 
     @Column(name = "PName")
-    private String PName;
+    private String pName;
 
     @Column(name = "ImgSrc")
-    private String ImgSrc;
-
+    private String imgSrc;
 
 }
