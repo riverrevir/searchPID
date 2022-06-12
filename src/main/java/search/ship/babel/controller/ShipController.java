@@ -4,7 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import search.ship.babel.dto.ShipInfoDto;
+import search.ship.babel.dto.ShipInfoRequest;
+import search.ship.babel.dto.ShipInfoResponse;
 import search.ship.babel.repository.ShipRepository;
 import search.ship.babel.service.ShipService;
 
@@ -16,9 +20,13 @@ public class ShipController {
     private final ShipRepository shipRepository;
     private final ShipService shipService;
 
-    @GetMapping("/symbol")
-    public String symbol(String symbol) throws Exception {
-        return shipService.symbolSearch(symbol);
-    }
+//    @GetMapping("/symbol")
+//    public String symbol(String symbol) throws Exception {
+//        return shipService.symbolSearch(symbol);
+//    }
 
+    @GetMapping("/symbol/category")
+    public ShipInfoResponse symbol(@RequestBody ShipInfoRequest shipInfoRequest){
+        return null;
+    }
 }
