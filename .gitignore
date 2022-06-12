@@ -73,5 +73,9 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# QueryDSL
+/src/main/generated
+
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,redis,gradle
 https://kim-jong-hyun.tistory.com/99
+
