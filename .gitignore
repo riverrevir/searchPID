@@ -75,5 +75,5 @@ gradle-app.setting
 
 # QueryDSL
 /src/main/generated
-
+generated
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,redis,gradle
