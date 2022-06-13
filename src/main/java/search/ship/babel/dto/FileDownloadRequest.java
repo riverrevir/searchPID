@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ShipInfoProjectRequest {
-    private String project;
+public class FileDownloadRequest {
+    private String imgName;
+    private String imgType;
 }

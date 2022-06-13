@@ -1,14 +1,20 @@
 package search.ship.babel.repository;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Repository;
 import search.ship.babel.domain.Ship;
 
-import java.util.List;
-import java.util.Optional;
-
+@Repository
 public interface ShipRepository extends JpaRepository<Ship, Long> {
-    List<Ship> findByProject(String project);
+
+    @Query(
+            value = "SELECT s FROM ship s" +
+                    " WHERE s.project = :project",
+            countQuery = "SELECT count(s) FROM ship s" +
+                    " WHERE s.project = :project"
+    )
+    Page<Ship> findAllByProject(String project, Pageable pageable);
 }

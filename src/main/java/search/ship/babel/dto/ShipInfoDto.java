@@ -12,12 +12,15 @@ import search.ship.babel.domain.Ship;
 public class ShipInfoDto {
     private String symbolName;
 
-    private String imgSrc;
+    private String imgName;
+
+    private String imgType;
 
     public static ShipInfoDto from(Ship ship){
         return ShipInfoDto.builder()
                 .symbolName(ship.getSymbolName())
-                .imgSrc(ship.getImgSrc())
+                .imgName(ship.getImgName())
+                .imgType(ship.getImgType())
                 .build();
     }
 }
