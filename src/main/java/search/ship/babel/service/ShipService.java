@@ -2,6 +2,8 @@ package search.ship.babel.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import search.ship.babel.domain.Ship;
@@ -22,26 +24,21 @@ public class ShipService {
 
     private final ShipRepositorySupport shipRepositorySupport;
 
-    /**
-     * todo
-     */
     @Transactional(readOnly = true)
-    public ShipInfoCategoryResponse findShipInfoByProject(ShipInfoProjectRequest request) {
+    public ShipInfoCategoryResponse findShipInfoByProject(ShipInfoProjectRequest request, Pageable pageable) {
         final String project = request.getProject();
+        Page<Ship> ship = shipRepository.findAllByProject(project,pageable);
 
-        List<Ship> ship = shipRepository.findByProject(project);
-        ship.stream().forEach(s->log.info(s.toString()));
         return ShipInfoCategoryResponse.from(ship);
     }
 
     @Transactional(readOnly = true)
-    public ShipInfoCategoryResponse findShipInfoByCategory(ShipInfoCategoryRequest request) {
+    public ShipInfoCategoryResponse findShipInfoByCategory(ShipInfoCategoryRequest request, Pageable pageable) {
         final String largeCategory = request.getLargeCategory();
         final String middleCategory = request.getMiddleCategory();
         final String subCategory = request.getSubCategory();
 
-        List<Ship> ship = shipRepositorySupport.findByCategory(largeCategory, middleCategory, subCategory);
+        Page<Ship> ship = shipRepositorySupport.findAllByCategory(largeCategory, middleCategory, subCategory,pageable);
         return ShipInfoCategoryResponse.from(ship);
     }
-
 }

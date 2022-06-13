@@ -36,7 +36,9 @@ public class Ship {
     @Column(name = "symbol_name")
     private String symbolName;
 
-    @Column(name = "img_src")
-    private String imgSrc;
+    @Column(name = "img_name")
+    private String imgName;
 
+    @Column(name = "img_type")
+    private String imgType;
 }
