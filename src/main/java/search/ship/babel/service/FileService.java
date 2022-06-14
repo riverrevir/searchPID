@@ -10,7 +10,7 @@ import java.io.OutputStream;
 
 @Service
 public class FileService {
-    private static final String root = "ROOT PATH";
+    private static final String root = "../img/";
 
     public void downloadImg(String imgName, String imgType, HttpServletResponse response) {
         String imgSrc = new StringBuilder(root).append("/").append(imgName).append(".").append(imgType).toString();

@@ -23,7 +23,11 @@ configurations {
 		extendsFrom annotationProcessor
 	}
 }
-
+jar {
+	manifest {
+		attributes 'Main-Class': 'search.ship.babel.BabelApplication'
+	}
+}
 repositories {
 	mavenCentral()
 }
