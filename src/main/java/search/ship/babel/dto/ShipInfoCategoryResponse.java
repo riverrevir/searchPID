@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ShipInfoCategoryResponse {
-    private Page<ShipInfoDto> shipInfos;
+    private List<ShipInfoDto> shipInfos;
 
-    public static ShipInfoCategoryResponse from(Page<Ship> ship){
-        Page<ShipInfoDto> shipInfoDtoList = ship.map(ShipInfoDto::from);
+    public static ShipInfoCategoryResponse from(Page<Ship> ships){
+        List<ShipInfoDto> shipInfoDtoList = ships.map(ShipInfoDto::from).toList();
         return new ShipInfoCategoryResponse(shipInfoDtoList);
     }
 }
