@@ -18,4 +18,12 @@ public interface ShipRepository extends JpaRepository<Ship, Long> {
                     " WHERE s.project = :project"
     )
     Page<Ship> findAllByProject(@Param("project") String project, Pageable pageable);
+
+    @Query(
+            value = "SELECT s FROM ship s" +
+                    " WHERE s.subCategory = :subCategory",
+            countQuery = "SELECT count(s) FROM ship s" +
+                    " WHERE s.subCategory = :subCategory"
+    )
+    Page<Ship> findBySubCategory(@Param("subCategory") String subcategory, Pageable pageable);
 }

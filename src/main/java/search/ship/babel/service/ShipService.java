@@ -10,6 +10,7 @@ import search.ship.babel.domain.Ship;
 import search.ship.babel.dto.ShipInfoCategoryRequest;
 import search.ship.babel.dto.ShipInfoCategoryResponse;
 import search.ship.babel.dto.ShipInfoProjectRequest;
+import search.ship.babel.dto.ShipInfoSubCategoryRequest;
 import search.ship.babel.repository.ShipRepository;
 import search.ship.babel.repository.ShipRepositorySupport;
 
@@ -27,8 +28,7 @@ public class ShipService {
     @Transactional(readOnly = true)
     public ShipInfoCategoryResponse findShipInfoByProject(ShipInfoProjectRequest request, Pageable pageable) {
         final String project = request.getProject();
-        Page<Ship> ship = shipRepository.findAllByProject(project,pageable);
-
+        Page<Ship> ship = shipRepository.findAllByProject(project, pageable);
         return ShipInfoCategoryResponse.from(ship);
     }
 
@@ -37,8 +37,14 @@ public class ShipService {
         final String largeCategory = request.getLargeCategory();
         final String middleCategory = request.getMiddleCategory();
         final String subCategory = request.getSubCategory();
+        Page<Ship> ship = shipRepositorySupport.findAllByCategory(largeCategory, middleCategory, subCategory, pageable);
+        return ShipInfoCategoryResponse.from(ship);
+    }
 
-        Page<Ship> ship = shipRepositorySupport.findAllByCategory(largeCategory, middleCategory, subCategory,pageable);
+    @Transactional(readOnly = true)
+    public ShipInfoCategoryResponse findShipInfoBySubCategory(ShipInfoSubCategoryRequest request, Pageable pageable) {
+        final String subCategory = request.getSubCategory();
+        Page<Ship> ship = shipRepository.findBySubCategory(subCategory, pageable);
         return ShipInfoCategoryResponse.from(ship);
     }
 }

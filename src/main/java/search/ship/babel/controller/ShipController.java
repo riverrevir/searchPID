@@ -3,10 +3,7 @@ package search.ship.babel.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-import search.ship.babel.dto.ShipInfoCategoryRequest;
-import search.ship.babel.dto.ShipInfoCategoryResponse;
-import search.ship.babel.dto.ShipInfoDto;
-import search.ship.babel.dto.ShipInfoProjectRequest;
+import search.ship.babel.dto.*;
 import search.ship.babel.service.FileService;
 import search.ship.babel.service.ShipService;
 
@@ -24,12 +21,17 @@ public class ShipController {
     private final FileService fileService;
 
     @GetMapping("/ship/project")
-    public ShipInfoCategoryResponse getShipInfoByProject(@ModelAttribute ShipInfoProjectRequest shipInfoProjectRequest, Pageable pageable) {
-        return shipService.findShipInfoByProject(shipInfoProjectRequest,pageable);
+    public ShipInfoCategoryResponse getShipInfoByProject(@ModelAttribute ShipInfoProjectRequest request, Pageable pageable) {
+        return shipService.findShipInfoByProject(request, pageable);
     }
 
     @GetMapping("/ship/category")
-    public ShipInfoCategoryResponse getShipInfoByCategory(@ModelAttribute ShipInfoCategoryRequest shipInfoCategoryRequest, Pageable pageable) {
-        return shipService.findShipInfoByCategory(shipInfoCategoryRequest,pageable);
+    public ShipInfoCategoryResponse getShipInfoByCategory(@ModelAttribute ShipInfoCategoryRequest request, Pageable pageable) {
+        return shipService.findShipInfoByCategory(request, pageable);
+    }
+
+    @GetMapping("/ship/project/subcategory")
+    public ShipInfoCategoryResponse getShipInfoBySubCategory(@ModelAttribute ShipInfoSubCategoryRequest request, Pageable pageable) {
+        return shipService.findShipInfoBySubCategory(request, pageable);
     }
 }
