@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import search.ship.babel.dto.list.DesignerListResponse;
 import search.ship.babel.dto.symbol.SymbolInfoDto;
 import search.ship.babel.service.ProjectSymbolService;
 
@@ -23,5 +24,10 @@ public class SymbolController {
     @GetMapping("/api/designer")
     public List<SymbolInfoDto> findDesigner(@RequestParam String designer) {
         return projectSymbolService.findByDesigner(designer);
+    }
+
+    @GetMapping("/api/list/designer")
+    public DesignerListResponse getByDesignerList() {
+        return projectSymbolService.getByDesigner();
     }
 }
