@@ -1,7 +1,11 @@
 package search.ship.babel.domain;
 
-import javax.persistence.*;
+import lombok.Getter;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Getter
 @Entity(name = "symbol")
 public class Symbol {
     @Id
@@ -19,4 +23,7 @@ public class Symbol {
     private String imgType;
 
     private String symbolDesigner;
+
+    @OneToMany(mappedBy = "symbol")
+    private List<ProjectSymbol> projectSymbols;
 }
