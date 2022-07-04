@@ -7,6 +7,7 @@ import search.ship.babel.domain.Project;
 import search.ship.babel.domain.ProjectSymbol;
 import search.ship.babel.domain.Symbol;
 import search.ship.babel.dto.list.DesignerListResponse;
+import search.ship.babel.dto.project.ProjectListResponse;
 import search.ship.babel.dto.symbol.SymbolInfoDto;
 import search.ship.babel.repository.ProjectRepository;
 import search.ship.babel.repository.ProjectSymbolRepository;
@@ -53,5 +54,14 @@ public class ProjectSymbolService {
     public DesignerListResponse getByDesigner() {
         List<String> symbols = symbolRepository.findDistinctSymbolDesigner();
         return new DesignerListResponse(symbols);
+    }
+
+    @Transactional(readOnly = true)
+    public ProjectListResponse getByProject() {
+        List<Project> projects = projectRepository.findByProjectName();
+        List<String> responses = projects.stream()
+                .map(project -> project.getProjectName())
+                .collect(Collectors.toList());
+        return new ProjectListResponse(responses);
     }
 }
