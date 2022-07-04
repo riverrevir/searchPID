@@ -12,9 +12,11 @@ public class ProjectSymbol {
     private Long projectSymbolNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_number")
     private Project project;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "symbol_number")
     private Symbol symbol;
 
     public void addProjectAndSymbol(Project project, Symbol symbol) {

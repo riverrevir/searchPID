@@ -13,6 +13,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectNumber;
 
+    @Column(unique = true)
     private String projectName;
 
     @OneToMany(mappedBy = "project")

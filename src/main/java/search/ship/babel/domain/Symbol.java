@@ -10,7 +10,7 @@ import java.util.List;
 public class Symbol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long number;
+    private Long symbolNumber;
 
     private String symbolCategory;
 
