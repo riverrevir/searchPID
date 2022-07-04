@@ -17,21 +17,33 @@ public class SymbolController {
 
     private final ProjectSymbolService projectSymbolService;
 
+    /**
+     * 프로젝트 검색
+     */
     @GetMapping("/api/project")
     public List<SymbolInfoDto> findProjectByName(@RequestParam String projectName) {
         return projectSymbolService.findByProjectName(projectName);
     }
 
+    /**
+     * 설계사 검색
+     */
     @GetMapping("/api/designer")
     public List<SymbolInfoDto> findDesigner(@RequestParam String designer) {
         return projectSymbolService.findByDesigner(designer);
     }
 
+    /**
+     * 설계사 리스트 호출
+     */
     @GetMapping("/api/list/designer")
     public DesignerListResponse getByDesignerList() {
         return projectSymbolService.getByDesigner();
     }
 
+    /**
+     * 프로젝트 리스트 호출
+     */
     @GetMapping("/api/list/project")
     public ProjectListResponse getByProjectList() {
         return projectSymbolService.getByProject();
