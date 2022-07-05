@@ -9,9 +9,11 @@ import search.ship.babel.domain.Symbol;
 import search.ship.babel.dto.list.DesignerListResponse;
 import search.ship.babel.dto.project.ProjectListResponse;
 import search.ship.babel.dto.symbol.SymbolInfoDto;
+import search.ship.babel.dto.symbol.SymbolSearchRequest;
 import search.ship.babel.repository.ProjectRepository;
 import search.ship.babel.repository.ProjectSymbolRepository;
 import search.ship.babel.repository.SymbolRepository;
+import search.ship.babel.repository.SymbolRepositorySupport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ public class ProjectSymbolService {
     private final ProjectRepository projectRepository;
 
     private final SymbolRepository symbolRepository;
+    private final SymbolRepositorySupport symbolRepositorySupport;
 
     @Transactional(readOnly = true)
     public List<SymbolInfoDto> findByProjectName(String projectName) {
@@ -63,5 +66,19 @@ public class ProjectSymbolService {
                 .map(project -> project.getProjectName())
                 .collect(Collectors.toList());
         return new ProjectListResponse(responses);
+    }
+
+    @Transactional(readOnly = true)
+    public List<SymbolInfoDto> getByCategory(SymbolSearchRequest request){
+        final String category=request.getCategory();
+        final String symbolName= request.getSymbolName();
+        final String designer= request.getDesigner();
+        List<Symbol> symbols= symbolRepositorySupport.findAllByCategory(category,symbolName,designer);
+        List<SymbolInfoDto> symbolInfoDtos=new ArrayList<>();
+        symbols.forEach(symbol -> {
+            SymbolInfoDto symbolInfoDto=SymbolInfoDto.from(symbol);
+            symbolInfoDtos.add(symbolInfoDto);
+        });
+        return symbolInfoDtos;
     }
 }
