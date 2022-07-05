@@ -29,4 +29,13 @@ public class SymbolInfoDto {
                 .imgType(symbol.getImgType())
                 .build();
     }
+    public static SymbolInfoDto from(Symbol symbol){
+        return SymbolInfoDto.builder()
+                .symbolName(symbol.getSymbolName())
+                .symbolCategory(symbol.getSymbolCategory())
+                .symbolDesigner(symbol.getSymbolDesigner())
+                .imgName(symbol.getImgName())
+                .imgType(symbol.getImgType())
+                .build();
+    }
 }
