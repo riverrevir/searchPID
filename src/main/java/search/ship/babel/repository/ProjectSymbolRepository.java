@@ -2,6 +2,7 @@ package search.ship.babel.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import search.ship.babel.domain.ProjectSymbol;
 
 import java.util.List;
@@ -12,11 +13,11 @@ public interface ProjectSymbolRepository extends JpaRepository<ProjectSymbol, Lo
             "JOIN ps.project " +
             "JOIN fetch ps.symbol " +
             "WHERE ps.project.projectNumber = :projectNumber")
-    List<ProjectSymbol> findProjectSymbolByProjectProjectNumber(Long projectNumber);
+    List<ProjectSymbol> findProjectSymbolByProjectProjectNumber(@Param("projectNumber") Long projectNumber);
 
     @Query("SELECT ps FROM ProjectSymbol ps " +
             "JOIN ps.symbol " +
             "JOIN fetch ps.project " +
             "WHERE ps.symbol.symbolNumber = :symbolNumber")
-    List<ProjectSymbol> findProjectSymbolBySymbolSymbolNumber(Long symbolNumber);
+    List<ProjectSymbol> findProjectSymbolBySymbolSymbolNumber(@Param("symbolNumber") Long symbolNumber);
 }
