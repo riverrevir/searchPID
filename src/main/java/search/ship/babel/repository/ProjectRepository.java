@@ -10,4 +10,6 @@ import java.util.Optional;
 
 public interface ProjectRepository extends JpaRepository<Project, String> {
     Optional<Project> findByDesignerCode(String designerCode);
+    @Query("SELECT p FROM project p")
+    List<Project> findByProjectCode();
 }
