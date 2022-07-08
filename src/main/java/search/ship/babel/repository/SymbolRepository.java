@@ -5,10 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import search.ship.babel.domain.Symbol;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface SymbolRepository extends JpaRepository<Symbol, Long> {
-    List<Symbol> findBySymbolDesigner(String designer);
-
-    @Query(value = "SELECT DISTINCT s.symbolDesigner FROM symbol s")
-    List<String> findDistinctSymbolDesigner();
+public interface SymbolRepository extends JpaRepository<Symbol, String> {
+    Optional<Symbol> findBySymbolCode(String symbolCode);
 }
