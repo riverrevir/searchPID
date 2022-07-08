@@ -15,6 +15,11 @@ public class ProjectListResponse {
     private String symbolName;
     private String file;
 
+    public static ProjectListResponse from(Project project){
+        return ProjectListResponse.builder()
+                .projectCode(project.getProjectCode())
+                .build();
+    }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, AKERImage akerImage){
         return ProjectListResponse.builder()
                 .projectCode(project.getProjectCode())
