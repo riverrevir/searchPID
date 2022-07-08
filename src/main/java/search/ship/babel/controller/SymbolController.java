@@ -24,6 +24,9 @@ public class SymbolController {
         return projectSearchService.getProjectListByDesigner(designerName);
     }
 
+    /**
+     * 프로젝트 리스트 호출
+     */
     @GetMapping(value = "/api/project/list")
     public List<ProjectListResponse> getProjectList(){
         return projectListService.getByProjectList();
