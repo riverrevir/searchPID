@@ -3,16 +3,18 @@ package search.ship.babel.domain;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity(name = "symbol")
+@Entity(name = "DSMEImage")
 @Getter
-public class Symbol {
+public class DSMEImage {
     @Id
+    private String DSMECode;
+
+    @Column
     private String symbolCode;
 
     @Column
-    private String symbolName;
+    private String DSMEFile;
+
 
 }

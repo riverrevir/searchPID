@@ -3,16 +3,18 @@ package search.ship.babel.domain;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity(name = "symbol")
+@Entity(name = "KBRImage")
 @Getter
-public class Symbol {
+public class KBRImage {
     @Id
+    private String KBRCode;
+
+    @Column
     private String symbolCode;
 
     @Column
-    private String symbolName;
+    private String KBRFile;
+
 
 }

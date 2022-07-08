@@ -1,21 +1,17 @@
 package search.ship.babel.domain;
 
-
 import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "project")
+@Entity(name = "designer")
 @Getter
-public class Project {
+public class Designer {
     @Id
-    private String projectCode;
-
-    @Column
     private String designerCode;
 
     @Column
-    private String projectList;
+    private String designerName;
 }
