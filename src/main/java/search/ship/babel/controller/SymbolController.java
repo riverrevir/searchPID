@@ -28,7 +28,15 @@ public class SymbolController {
      * 프로젝트 리스트 호출
      */
     @GetMapping(value = "/api/project/list")
-    public List<ProjectListResponse> getProjectList(){
+    public List<ProjectListResponse> getProjectList() {
         return projectListService.getByProjectList();
+    }
+
+    /**
+     * 프로젝트 검색
+     */
+    @GetMapping(value = "/api/project")
+    public List<ProjectListResponse> getProjectByProjectCode(@RequestParam String projectCode) {
+        return projectSearchService.getProjectListByProjectCode(projectCode);
     }
 }
