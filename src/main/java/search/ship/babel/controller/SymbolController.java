@@ -1,10 +1,14 @@
 package search.ship.babel.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import search.ship.babel.dto.designer.DesignerImageListResponse;
+import search.ship.babel.dto.designer.DesignerProjectListResponse;
+import search.ship.babel.dto.project.ProjectAddResponse;
 import search.ship.babel.dto.project.ProjectListResponse;
 import search.ship.babel.service.DesignerImageListService;
 import search.ship.babel.service.ProjectListService;
@@ -39,8 +43,8 @@ public class SymbolController {
      * 프로젝트 리스트 호출
      */
     @GetMapping(value = "/api/project/list")
-    public List<ProjectListResponse> getProjectList() {
-        return projectListService.getByProjectList();
+    public List<DesignerProjectListResponse> getProjectList(@RequestParam String designerName) {
+        return projectListService.getByProjectList(designerName);
     }
 
     /**
@@ -50,4 +54,10 @@ public class SymbolController {
     public List<ProjectListResponse> getProjectByProjectCode(@RequestParam String projectCode) {
         return projectSearchService.getProjectListByProjectCode(projectCode);
     }
+
+    /**
+     * 프로젝트 추가
+     */
+//    @PostMapping(value = "/api/project/add")
+//    public ProjectAddResponse addProjectByProjectCode(@Validated)
 }

@@ -8,11 +8,12 @@ import search.ship.babel.domain.Project;
 import java.util.List;
 import java.util.Optional;
 
-public interface ProjectRepository extends JpaRepository<Project, String> {
+public interface ProjectRepository extends JpaRepository<Project, Long> {
     Optional<Project> findByDesignerCode(String designerCode);
 
-    @Query("SELECT p FROM project p")
-    List<Project> findByProjectCode();
+    @Query("SELECT DISTINCT p.projectCode FROM project p " +
+            "WHERE designerCode = :designerCode")
+    List<String> findByProjectName(@Param("designerCode") String designerCode);
 
     Optional<Project> findByProjectCode(String projectCode);
 }
