@@ -25,12 +25,12 @@ public class SymbolController {
     /**
      * 디자이너로 프로젝트 검색
      */
-    @GetMapping(value = "/api/designer")
+    @GetMapping(value = "/api/project/list")
     public List<ProjectListResponse> getProjectByDesigner(@RequestParam String designerName) {
         return projectSearchService.getProjectListByDesigner(designerName);
     }
 
-    /**
+    /** 수정해야함(response)
      * 해당 디자이너의 이미지 보여주기
      * @param designerName
      * @return
@@ -42,10 +42,10 @@ public class SymbolController {
     /**
      * 프로젝트 리스트 호출
      */
-    @GetMapping(value = "/api/project/list")
-    public List<DesignerProjectListResponse> getProjectList(@RequestParam String designerName) {
-        return projectListService.getByProjectList(designerName);
-    }
+//    @GetMapping(value = "/api/project/list")
+//    public List<DesignerProjectListResponse> getProjectList(@RequestParam String designerName) {
+//        return projectListService.getByProjectList(designerName);
+//    }
 
     /**
      * 프로젝트 검색

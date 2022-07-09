@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
-    Optional<Project> findByDesignerCode(String designerCode);
+    List<Project> findByDesignerCode(String designerCode);
 
     @Query("SELECT DISTINCT p.projectCode FROM project p " +
             "WHERE designerCode = :designerCode")
