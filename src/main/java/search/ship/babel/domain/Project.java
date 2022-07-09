@@ -4,6 +4,7 @@ package search.ship.babel.domain;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,10 @@ import java.util.List;
 @Getter
 public class Project {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long projectIndex;
+
+    @Column
     private String projectCode;
 
     @Column
@@ -18,4 +23,7 @@ public class Project {
 
     @Column
     private String projectList;
+
+    @Column
+    private LocalDateTime projectCreateAt;
 }
