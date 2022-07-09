@@ -4,15 +4,18 @@ import lombok.Builder;
 import lombok.Getter;
 import search.ship.babel.domain.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Builder
 public class ProjectListResponse {
+    private Long projectIndex;
     private String projectCode;
     private String designerName;
     private String classificationName;
     private String symbolName;
+    private LocalDateTime projectCreateAt;
     private String file;
 
     public static ProjectListResponse from(Project project){
@@ -22,7 +25,9 @@ public class ProjectListResponse {
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, AKERImage akerImage){
         return ProjectListResponse.builder()
+                .projectIndex(project.getProjectIndex())
                 .projectCode(project.getProjectCode())
+                .projectCreateAt(project.getProjectCreateAt())
                 .designerName(designer.getDesignerName())
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
@@ -31,7 +36,9 @@ public class ProjectListResponse {
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, DSMEImage dsmeImage){
         return ProjectListResponse.builder()
+                .projectIndex(project.getProjectIndex())
                 .projectCode(project.getProjectCode())
+                .projectCreateAt(project.getProjectCreateAt())
                 .designerName(designer.getDesignerName())
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
@@ -40,7 +47,9 @@ public class ProjectListResponse {
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, KBRImage kbrImage){
         return ProjectListResponse.builder()
+                .projectIndex(project.getProjectIndex())
                 .projectCode(project.getProjectCode())
+                .projectCreateAt(project.getProjectCreateAt())
                 .designerName(designer.getDesignerName())
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
@@ -49,7 +58,9 @@ public class ProjectListResponse {
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, TECHNIPImage technipImage){
         return ProjectListResponse.builder()
+                .projectIndex(project.getProjectIndex())
                 .projectCode(project.getProjectCode())
+                .projectCreateAt(project.getProjectCreateAt())
                 .designerName(designer.getDesignerName())
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
