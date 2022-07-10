@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Builder
-public class ProjectListResponse {
+public class ProjectListResponse implements Comparable<ProjectListResponse> {
     private Long projectIndex;
     private String projectCode;
     private String designerName;
@@ -66,5 +66,10 @@ public class ProjectListResponse {
                 .symbolName(symbol.getSymbolName())
                 .file(technipImage.getTECHNIPFile())
                 .build();
+    }
+
+    @Override
+    public int compareTo(ProjectListResponse projectListResponse) {
+        return this.classificationName.compareTo(projectListResponse.classificationName);
     }
 }
