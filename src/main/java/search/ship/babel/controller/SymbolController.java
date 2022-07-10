@@ -10,10 +10,8 @@ import search.ship.babel.dto.designer.DesignerProjectListResponse;
 import search.ship.babel.dto.project.ProjectAddRequest;
 import search.ship.babel.dto.project.ProjectAddResponse;
 import search.ship.babel.dto.project.ProjectListResponse;
-import search.ship.babel.service.DesignerImageListService;
-import search.ship.babel.service.ProjectAddService;
-import search.ship.babel.service.ProjectListService;
-import search.ship.babel.service.ProjectSearchService;
+import search.ship.babel.dto.symbol.SymbolInfoResponse;
+import search.ship.babel.service.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +23,7 @@ public class SymbolController {
     private final ProjectListService projectListService;
     private final DesignerImageListService designerImageListService;
     private final ProjectAddService projectAddService;
+    private final SymbolSearchService symbolSearchService;
 
     /**
      * 프로젝트 리스트 검색
@@ -65,5 +64,16 @@ public class SymbolController {
     @PostMapping(value = "/api/project/add")
     public ResponseEntity<ProjectAddResponse> addProject(@Validated @RequestBody ProjectAddRequest request) {
         return new ResponseEntity<>(projectAddService.projectAdd(request), HttpStatus.OK);
+    }
+
+    /**
+     * 심볼 검색
+     */
+    @GetMapping(value = "/api/symbol")
+    public List<SymbolInfoResponse> getSymbolData(@RequestParam String classificationName,String symbolName,String designerName){
+        if(!classificationName.equals("")&&symbolName.equals("")&&designerName.equals("")){
+            return symbolSearchService.getListByClassification(classificationName);
+        }
+        return null;
     }
 }

@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface ClassificationRepository extends JpaRepository<Classification, String> {
     Optional<Classification> findByClassificationCode(String classificationCode);
+
+    Optional<Classification> findByClassificationName(String classificationName);
 }

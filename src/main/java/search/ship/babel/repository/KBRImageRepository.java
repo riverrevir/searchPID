@@ -12,4 +12,6 @@ public interface KBRImageRepository extends JpaRepository<KBRImage, String> {
 
     @Query(value = "SELECT k FROM KBRImage k")
     List<KBRImage> findByImageCodeAndFile();
+
+    List<KBRImage> findBySymbolCode(String symbolCode);
 }

@@ -12,4 +12,6 @@ public interface TECHNIPImageRepository extends JpaRepository<TECHNIPImage, Stri
 
     @Query(value = "SELECT t FROM TECHNIPImage t")
     List<TECHNIPImage> findByImageCodeAndFile();
+
+    List<TECHNIPImage> findBySymbolCode(String symbolCode);
 }
