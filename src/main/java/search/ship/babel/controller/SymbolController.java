@@ -73,6 +73,8 @@ public class SymbolController {
     public List<SymbolInfoResponse> getSymbolData(@RequestParam String classificationName,String symbolName,String designerName){
         if(!classificationName.equals("")&&symbolName.equals("")&&designerName.equals("")){
             return symbolSearchService.getListByClassification(classificationName);
+        } else if(!classificationName.equals("")&&!symbolName.equals("")&&designerName.equals("")){
+            return symbolSearchService.getListByClassificationAndSymbolName(classificationName,symbolName);
         }
         return null;
     }

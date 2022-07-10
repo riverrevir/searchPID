@@ -48,4 +48,32 @@ public class SymbolSearchService {
         });
         return symbolInfoResponses;
     }
+    public List<SymbolInfoResponse> getListByClassificationAndSymbolName(String classificationName,String symbolName){
+        List<SymbolInfoResponse> symbolInfoResponses=new ArrayList<>();
+        Classification classification = classificationRepository.findByClassificationName(classificationName).orElseThrow(()->new IllegalArgumentException("해당 분류가 없습니다."));
+        Symbol symbol=symbolRepository.findBySymbolName(symbolName).orElseThrow(()->new IllegalArgumentException("해당 심볼명이 없습니다."));
+
+        List<DSMEImage> dsmeImages=dsmeImageRepository.findBySymbolCode(symbol.getSymbolCode());
+        List<AKERImage> akerImages=akerImageRepository.findBySymbolCode(symbol.getSymbolCode());
+        List<KBRImage> kbrImages=kbrImageRepository.findBySymbolCode(symbol.getSymbolCode());
+        List<TECHNIPImage> technipImages=technipImageRepository.findBySymbolCode(symbol.getSymbolCode());
+
+        dsmeImages.forEach(dsmeImage -> {
+            SymbolInfoResponse symbolInfoResponse=SymbolInfoResponse.from(classification,symbol,"dsme",dsmeImage);
+            symbolInfoResponses.add(symbolInfoResponse);
+        });
+        akerImages.forEach(akerImage -> {
+            SymbolInfoResponse symbolInfoResponse=SymbolInfoResponse.from(classification,symbol,"Aker",akerImage);
+            symbolInfoResponses.add(symbolInfoResponse);
+        });
+        kbrImages.forEach(kbrImage -> {
+            SymbolInfoResponse symbolInfoResponse=SymbolInfoResponse.from(classification,symbol,"KBR",kbrImage);
+            symbolInfoResponses.add(symbolInfoResponse);
+        });
+        technipImages.forEach(technipImage -> {
+            SymbolInfoResponse symbolInfoResponse=SymbolInfoResponse.from(classification,symbol,"Technip",technipImage);
+            symbolInfoResponses.add(symbolInfoResponse);
+        });
+        return symbolInfoResponses;
+    }
 }
