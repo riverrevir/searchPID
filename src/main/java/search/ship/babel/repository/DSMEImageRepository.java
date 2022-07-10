@@ -11,4 +11,6 @@ public interface DSMEImageRepository extends JpaRepository<DSMEImage, String> {
     Optional<DSMEImage> findByDSMECode(String DSMECode);
     @Query(value = "SELECT d FROM DSMEImage d")
     List<DSMEImage> findByImageCodeAndFile();
+
+    List<DSMEImage> findBySymbolCode(String symbolCode);
 }

@@ -11,4 +11,6 @@ public interface AKERImageRepository extends JpaRepository<AKERImage, String> {
     Optional<AKERImage> findByAKERCode(String AKERCode);
     @Query(value = "SELECT a FROM AKERImage a")
     List<AKERImage> findByImageCodeAndFile();
+
+    List<AKERImage> findBySymbolCode(String symbolCode);
 }
