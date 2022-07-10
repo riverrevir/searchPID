@@ -70,13 +70,17 @@ public class SymbolController {
      * 심볼 검색
      */
     @GetMapping(value = "/api/symbol")
-    public List<SymbolInfoResponse> getSymbolData(@RequestParam String classificationName,String symbolName,String designerName){
-        if(!classificationName.equals("")&&symbolName.equals("")&&designerName.equals("")){
+    public List<SymbolInfoResponse> getSymbolData(@RequestParam String classificationName, String symbolName, String designerName) {
+        if (!classificationName.equals("") && symbolName.equals("") && designerName.equals("")) {
             return symbolSearchService.getListByClassification(classificationName);
-        } else if(!classificationName.equals("")&&!symbolName.equals("")&&designerName.equals("")){
-            return symbolSearchService.getListByClassificationAndSymbolName(classificationName,symbolName);
-        } else if(!classificationName.equals("")&&!symbolName.equals("")&&!designerName.equals("")){
-            return symbolSearchService.getListByClassificationAndSymbolNameAndDesignerName(classificationName,symbolName,designerName);
+        } else if (!classificationName.equals("") && !symbolName.equals("") && designerName.equals("")) {
+            return symbolSearchService.getListByClassificationAndSymbolName(classificationName, symbolName);
+        } else if (!classificationName.equals("") && !symbolName.equals("") && !designerName.equals("")) {
+            return symbolSearchService.getListByClassificationAndSymbolNameAndDesignerName(classificationName, symbolName, designerName);
+        } else if (!classificationName.equals("") && symbolName.equals("") && !designerName.equals("")) {
+            return symbolSearchService.getListByClassificationAndDesignerName(classificationName, designerName);
+        } else if (classificationName.equals("") && symbolName.equals("") && !designerName.equals("")) {
+            return symbolSearchService.getListByDesignerName(designerName);
         }
         return null;
     }
