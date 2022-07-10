@@ -2,6 +2,7 @@ package search.ship.babel.domain;
 
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Entity(name = "project")
 @Getter
+@Setter
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +28,9 @@ public class Project {
 
     @Column
     private LocalDateTime projectCreateAt;
+
+    public Project() {
+        projectCreateAt = LocalDateTime.now();
+    }
+
 }

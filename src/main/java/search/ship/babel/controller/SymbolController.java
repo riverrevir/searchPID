@@ -1,13 +1,17 @@
 package search.ship.babel.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import search.ship.babel.dto.designer.DesignerImageListResponse;
 import search.ship.babel.dto.designer.DesignerProjectListResponse;
+import search.ship.babel.dto.project.ProjectAddRequest;
+import search.ship.babel.dto.project.ProjectAddResponse;
 import search.ship.babel.dto.project.ProjectListResponse;
 import search.ship.babel.service.DesignerImageListService;
+import search.ship.babel.service.ProjectAddService;
 import search.ship.babel.service.ProjectListService;
 import search.ship.babel.service.ProjectSearchService;
 
@@ -20,17 +24,18 @@ public class SymbolController {
     private final ProjectSearchService projectSearchService;
     private final ProjectListService projectListService;
     private final DesignerImageListService designerImageListService;
+    private final ProjectAddService projectAddService;
 
     /**
      * 프로젝트 리스트 검색
      */
     @GetMapping(value = "/api/project/detail")
-    public List<ProjectListResponse> getProject(@RequestParam String designerName,String projectCode){
-        if(designerName.equals("")&&projectCode.equals("")) {
+    public List<ProjectListResponse> getProject(@RequestParam String designerName, String projectCode) {
+        if (designerName.equals("") && projectCode.equals("")) {
             return projectSearchService.getAllProjectList().stream().sorted().collect(Collectors.toList());
-        } else if(!designerName.equals("")&&projectCode.equals("")){
+        } else if (!designerName.equals("") && projectCode.equals("")) {
             return projectSearchService.getProjectListByDesigner(designerName).stream().sorted().collect(Collectors.toList());
-        }else if(!designerName.equals("")&&!projectCode.equals("")){
+        } else if (!designerName.equals("") && !projectCode.equals("")) {
             return projectSearchService.getProjectListByDesignerAndProjectCode(designerName, projectCode).stream().sorted().collect(Collectors.toList());
         }
         return null;
@@ -51,6 +56,7 @@ public class SymbolController {
     /**
      * 프로젝트 리스트 호출(sort 추가 할 예정)
      */
+
     @GetMapping(value = "/api/project/list")
     public List<DesignerProjectListResponse> getProjectList(@RequestParam String designerName) {
         return projectListService.getByProjectList(designerName);
@@ -60,6 +66,8 @@ public class SymbolController {
     /**
      * 프로젝트 추가
      */
-//    @PostMapping(value = "/api/project/add")
-//    public ProjectAddResponse addProjectByProjectCode(@Validated)
+    @PostMapping(value = "/api/project/add")
+    public ResponseEntity<ProjectAddResponse> addProject(@Validated @RequestBody ProjectAddRequest request) {
+        return new ResponseEntity<>(projectAddService.projectAdd(request), HttpStatus.OK);
+    }
 }
