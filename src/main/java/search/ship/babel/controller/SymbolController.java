@@ -42,11 +42,7 @@ public class SymbolController {
     }
 
     /**
-     * 수정해야함(response)
      * 해당 디자이너의 이미지 보여주기
-     *
-     * @param designerName
-     * @return
      */
     @GetMapping(value = "/api/designer/image")
     public List<DesignerImageListResponse> getDesignerImageByDesignerName(@RequestParam String designerName) {
