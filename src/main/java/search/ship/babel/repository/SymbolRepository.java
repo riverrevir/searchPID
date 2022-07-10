@@ -9,4 +9,8 @@ import java.util.Optional;
 
 public interface SymbolRepository extends JpaRepository<Symbol, String> {
     Optional<Symbol> findBySymbolCode(String symbolCode);
+
+    List<Symbol> findBySymbolCodeStartsWith(String classificationName);
+
+    Optional<Symbol> findBySymbolName(String symbolName);
 }
