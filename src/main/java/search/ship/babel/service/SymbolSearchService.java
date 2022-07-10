@@ -76,4 +76,38 @@ public class SymbolSearchService {
         });
         return symbolInfoResponses;
     }
+
+    public List<SymbolInfoResponse> getListByClassificationAndSymbolNameAndDesignerName(String classificationName,String symbolName,String designerName){
+        List<SymbolInfoResponse> symbolInfoResponses=new ArrayList<>();
+        Classification classification = classificationRepository.findByClassificationName(classificationName).orElseThrow(()->new IllegalArgumentException("해당 분류가 없습니다."));
+        Symbol symbol=symbolRepository.findBySymbolName(symbolName).orElseThrow(()->new IllegalArgumentException("해당 심볼명이 없습니다."));
+        final String designerNameLower=designerName.toLowerCase();
+        if(designerNameLower.equals("dsme")){
+            List<DSMEImage> dsmeImages=dsmeImageRepository.findBySymbolCode(symbol.getSymbolCode());
+            dsmeImages.forEach(dsmeImage -> {
+                SymbolInfoResponse symbolInfoResponse=SymbolInfoResponse.from(classification,symbol,"dsme",dsmeImage);
+                symbolInfoResponses.add(symbolInfoResponse);
+            });
+        }else if(designerNameLower.equals("aker")){
+            List<AKERImage> akerImages=akerImageRepository.findBySymbolCode(symbol.getSymbolCode());
+            akerImages.forEach(akerImage -> {
+                SymbolInfoResponse symbolInfoResponse=SymbolInfoResponse.from(classification,symbol,"Aker",akerImage);
+                symbolInfoResponses.add(symbolInfoResponse);
+            });
+        }else if(designerNameLower.equals("kbr")){
+            List<KBRImage> kbrImages=kbrImageRepository.findBySymbolCode(symbol.getSymbolCode());
+            kbrImages.forEach(kbrImage -> {
+                SymbolInfoResponse symbolInfoResponse=SymbolInfoResponse.from(classification,symbol,"KBR",kbrImage);
+                symbolInfoResponses.add(symbolInfoResponse);
+            });
+
+        }else if(designerNameLower.equals("technip")){
+            List<TECHNIPImage> technipImages=technipImageRepository.findBySymbolCode(symbol.getSymbolCode());
+            technipImages.forEach(technipImage -> {
+                SymbolInfoResponse symbolInfoResponse=SymbolInfoResponse.from(classification,symbol,"Technip",technipImage);
+                symbolInfoResponses.add(symbolInfoResponse);
+            });
+        }
+        return symbolInfoResponses;
+    }
 }

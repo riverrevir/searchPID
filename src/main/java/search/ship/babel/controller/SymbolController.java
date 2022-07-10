@@ -75,6 +75,8 @@ public class SymbolController {
             return symbolSearchService.getListByClassification(classificationName);
         } else if(!classificationName.equals("")&&!symbolName.equals("")&&designerName.equals("")){
             return symbolSearchService.getListByClassificationAndSymbolName(classificationName,symbolName);
+        } else if(!classificationName.equals("")&&!symbolName.equals("")&&!designerName.equals("")){
+            return symbolSearchService.getListByClassificationAndSymbolNameAndDesignerName(classificationName,symbolName,designerName);
         }
         return null;
     }
