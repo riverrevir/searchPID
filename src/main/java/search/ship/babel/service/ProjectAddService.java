@@ -21,7 +21,7 @@ public class ProjectAddService {
 
     public ProjectAddResponse projectAdd(ProjectAddRequest request) {
         Designer designer = designerRepository.findByDesignerName(request.getDesignerName()).orElseThrow(() -> new IllegalArgumentException("해당 디자이너는 존재하지 않습니다."));
-        Project project=projectRepository.findList(request.getProjectCode(), designer.getDesignerCode(), request.getCurrentSymbolList()).orElseGet(Project::new);
+        Project project=projectRepository.findList(request.getProjectCode(), designer.getDesignerCode()).orElseGet(Project::new);
         project.setProjectCode(request.getProjectCode());
         project.setDesignerCode(designer.getDesignerCode());
         project.setSymbolList(request.getSymbolList());

@@ -13,9 +13,8 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     @Query("SELECT p FROM project p " +
             "WHERE projectCode= :projectCode AND " +
-            "designerCode= :designerCode AND " +
-            "symbolList= :currentSymbolList")
-    Optional<Project> findList(@Param("projectCode") String projectCode, @Param("designerCode") String designerCode, @Param("currentSymbolList") String currentSymbolList);
+            "designerCode= :designerCode")
+    Optional<Project> findList(@Param("projectCode") String projectCode, @Param("designerCode") String designerCode);
 
     @Query("SELECT DISTINCT p.projectCode FROM project p " +
             "WHERE designerCode = :designerCode")
