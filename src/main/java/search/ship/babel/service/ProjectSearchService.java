@@ -1,7 +1,6 @@
 package search.ship.babel.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import search.ship.babel.domain.*;
@@ -34,7 +33,7 @@ public class ProjectSearchService {
         final String designerCode = designer.getDesignerCode();
         List<Project> projects = projectRepository.findByDesignerCode(designerCode);
         projects.forEach(project -> {
-            final String projectList = project.getProjectList();
+            final String projectList = project.getSymbolList();
             final String[] projectListSplit = projectList.split(",");
             if (designerNameLower.equals("aker")) {
                 for (int i = 0; i < projectListSplit.length; i++) {
@@ -92,7 +91,7 @@ public class ProjectSearchService {
         Designer designer = designerRepository.findByDesignerName(designerName).orElseThrow(() -> new IllegalArgumentException("해당 디자이너가 없습니다."));
         List<Project> projects = projectRepository.findByProjectCodeAndDesignerCode(projectCode, designer.getDesignerCode());
         projects.forEach(project -> {
-            final String projectList = project.getProjectList();
+            final String projectList = project.getSymbolList();
             final String[] projectListSplit = projectList.split(",");
             if (designerNameLower.equals("aker")) {
                 for (int i = 0; i < projectListSplit.length; i++) {
@@ -147,7 +146,7 @@ public class ProjectSearchService {
         List<ProjectListResponse> projectListResponses=new ArrayList<>();
         List<Project> projects=projectRepository.findAll();
         projects.forEach(project -> {
-            final String projectList=project.getProjectList();
+            final String projectList=project.getSymbolList();
             final String[] projectListSplit=projectList.split(",");
             Designer designer=designerRepository.findByDesignerCode(project.getDesignerCode()).orElseThrow(()->new IllegalArgumentException("해당 디자이너가 존재하지 않습니다."));
             final String designerNameLower=designer.getDesignerName().toLowerCase();

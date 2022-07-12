@@ -61,7 +61,7 @@ public class SymbolController {
     /**
      * 프로젝트 추가
      */
-    @PostMapping(value = "/api/project/add")
+    @PostMapping(value = "/api/project")
     public ResponseEntity<ProjectAddResponse> addProject(@Validated @RequestBody ProjectAddRequest request) {
         return new ResponseEntity<>(projectAddService.projectAdd(request), HttpStatus.OK);
     }

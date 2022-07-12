@@ -17,5 +17,8 @@ public class ProjectAddRequest {
     private String designerName;
 
     @NotNull
-    private String projectList;
+    private String currentSymbolList;
+
+    @NotNull
+    private String symbolList;
 }

@@ -10,6 +10,8 @@ import search.ship.babel.dto.project.ProjectAddResponse;
 import search.ship.babel.repository.DesignerRepository;
 import search.ship.babel.repository.ProjectRepository;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -19,10 +21,10 @@ public class ProjectAddService {
 
     public ProjectAddResponse projectAdd(ProjectAddRequest request) {
         Designer designer = designerRepository.findByDesignerName(request.getDesignerName()).orElseThrow(() -> new IllegalArgumentException("해당 디자이너는 존재하지 않습니다."));
-        Project project = new Project();
+        Project project=projectRepository.findList(request.getProjectCode(), designer.getDesignerCode(), request.getCurrentSymbolList()).orElseGet(Project::new);
         project.setProjectCode(request.getProjectCode());
         project.setDesignerCode(designer.getDesignerCode());
-        project.setProjectList(request.getProjectList());
+        project.setSymbolList(request.getSymbolList());
         projectRepository.save(project);
         return new ProjectAddResponse("프로젝트가 추가 되었습니다.");
     }

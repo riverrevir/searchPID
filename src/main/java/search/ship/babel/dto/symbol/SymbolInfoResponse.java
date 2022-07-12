@@ -12,6 +12,7 @@ public class SymbolInfoResponse {
     private String symbolCode;
     private String designerName;
     private String file;
+    private String imageCode;
 
     public static SymbolInfoResponse from(Classification classification, Symbol symbol, String designerName, DSMEImage dsmeImage){
         return SymbolInfoResponse.builder()
@@ -19,6 +20,7 @@ public class SymbolInfoResponse {
                 .symbolName(symbol.getSymbolName())
                 .symbolCode(symbol.getSymbolCode())
                 .designerName(designerName)
+                .imageCode(dsmeImage.getDSMECode())
                 .file(dsmeImage.getDSMEFile())
                 .build();
     }
@@ -29,6 +31,7 @@ public class SymbolInfoResponse {
                 .symbolName(symbol.getSymbolName())
                 .symbolCode(symbol.getSymbolCode())
                 .designerName(designerName)
+                .imageCode(akerImage.getAKERCode())
                 .file(akerImage.getAKERFile())
                 .build();
     }
@@ -39,6 +42,7 @@ public class SymbolInfoResponse {
                 .symbolName(symbol.getSymbolName())
                 .symbolCode(symbol.getSymbolCode())
                 .designerName(designerName)
+                .imageCode(kbrImage.getKBRCode())
                 .file(kbrImage.getKBRFile())
                 .build();
     }
@@ -49,6 +53,7 @@ public class SymbolInfoResponse {
                 .symbolName(symbol.getSymbolName())
                 .symbolCode(symbol.getSymbolCode())
                 .designerName(designerName)
+                .imageCode(technipImage.getTECHNIPCode())
                 .file(technipImage.getTECHNIPFile())
                 .build();
     }

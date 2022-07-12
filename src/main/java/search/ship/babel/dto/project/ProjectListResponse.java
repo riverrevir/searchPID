@@ -15,7 +15,9 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
     private String designerName;
     private String classificationName;
     private String symbolName;
+    private String symbolCode;
     private LocalDateTime projectCreateAt;
+    private String imageCode;
     private String file;
 
     public static ProjectListResponse from(Project project){
@@ -31,7 +33,9 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .designerName(designer.getDesignerName())
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
+                .symbolName(symbol.getSymbolCode())
                 .file(akerImage.getAKERFile())
+                .imageCode(akerImage.getAKERCode())
                 .build();
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, DSMEImage dsmeImage){
@@ -42,7 +46,9 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .designerName(designer.getDesignerName())
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
+                .symbolCode(symbol.getSymbolCode())
                 .file(dsmeImage.getDSMEFile())
+                .imageCode(dsmeImage.getDSMECode())
                 .build();
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, KBRImage kbrImage){
@@ -53,7 +59,9 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .designerName(designer.getDesignerName())
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
+                .symbolCode(symbol.getSymbolCode())
                 .file(kbrImage.getKBRFile())
+                .imageCode(kbrImage.getKBRCode())
                 .build();
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, TECHNIPImage technipImage){
@@ -64,7 +72,9 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .designerName(designer.getDesignerName())
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
+                .symbolCode(symbol.getSymbolCode())
                 .file(technipImage.getTECHNIPFile())
+                .imageCode(technipImage.getTECHNIPCode())
                 .build();
     }
 

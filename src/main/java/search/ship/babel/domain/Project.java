@@ -6,8 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity(name = "project")
 @Getter
@@ -24,7 +22,7 @@ public class Project {
     private String designerCode;
 
     @Column
-    private String projectList;
+    private String symbolList;
 
     @Column
     private LocalDateTime projectCreateAt;
