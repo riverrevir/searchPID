@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import search.ship.babel.dto.designer.DesignerImageAddRequest;
 import search.ship.babel.dto.designer.DesignerImageListResponse;
 import search.ship.babel.dto.designer.DesignerProjectListResponse;
 import search.ship.babel.dto.project.ProjectAddRequest;
@@ -24,6 +25,7 @@ public class SymbolController {
     private final DesignerImageListService designerImageListService;
     private final ProjectAddService projectAddService;
     private final SymbolSearchService symbolSearchService;
+    private final DesignerImageAddService designerImageAddService;
 
     /**
      * 프로젝트 리스트 검색
@@ -83,5 +85,10 @@ public class SymbolController {
             return symbolSearchService.getListByDesignerName(designerName);
         }
         return null;
+    }
+
+    @PostMapping(value="/api/designer/add")
+    public ResponseEntity<ProjectAddResponse> addDesignerImg(@RequestBody DesignerImageAddRequest request){
+        return new ResponseEntity<>(designerImageAddService.designerImageAddByCode(request),HttpStatus.OK);
     }
 }
