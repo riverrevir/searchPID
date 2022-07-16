@@ -20,7 +20,7 @@ public class FileController {
     @GetMapping("/img")
     public void downloadImage(@ModelAttribute FileDownloadRequest request, HttpServletResponse response) {
         String imgName = request.getImgName();
-        String imgType = request.getImgType();
+        String imgType = "JPG";
         fileService.downloadImg(imgName, imgType, response);
     }
 }

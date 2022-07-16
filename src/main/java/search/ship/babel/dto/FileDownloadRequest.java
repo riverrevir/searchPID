@@ -7,5 +7,4 @@ import lombok.Setter;
 @Setter
 public class FileDownloadRequest {
     private String imgName;
-    private String imgType;
 }
