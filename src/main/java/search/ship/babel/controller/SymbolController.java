@@ -10,6 +10,7 @@ import search.ship.babel.dto.designer.DesignerImageListResponse;
 import search.ship.babel.dto.designer.DesignerProjectListResponse;
 import search.ship.babel.dto.project.ProjectAddRequest;
 import search.ship.babel.dto.project.ProjectAddResponse;
+import search.ship.babel.dto.project.ProjectDeleteResponse;
 import search.ship.babel.dto.project.ProjectListResponse;
 import search.ship.babel.dto.symbol.SymbolInfoResponse;
 import search.ship.babel.service.*;
@@ -26,6 +27,7 @@ public class SymbolController {
     private final ProjectAddService projectAddService;
     private final SymbolSearchService symbolSearchService;
     private final DesignerImageAddService designerImageAddService;
+    private final ProjectDeleteService projectDeleteService;
 
     /**
      * 프로젝트 리스트 검색
@@ -68,6 +70,13 @@ public class SymbolController {
         return new ResponseEntity<>(projectAddService.projectAdd(request), HttpStatus.OK);
     }
 
+    /**
+     * 프로젝트 삭제
+     */
+    @DeleteMapping(value="/api/project/{projectCode}")
+    public ResponseEntity<ProjectDeleteResponse> deleteProject(@PathVariable String projectCode,@RequestParam String designerName){
+        return new ResponseEntity<>(projectDeleteService.deleteProjectByProjectCodeAndDesignerName(projectCode,designerName),HttpStatus.OK);
+    }
     /**
      * 심볼 검색
      */
