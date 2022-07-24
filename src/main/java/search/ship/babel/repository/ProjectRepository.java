@@ -25,4 +25,6 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
     List<Project> findByProjectCodeAndDesignerCode(String projectCode, String designerCode);
 
     List<Project> findAll();
+
+    Optional<Project> findByDesignerCodeAndProjectCode(String designerCode,String projectCode);
 }
