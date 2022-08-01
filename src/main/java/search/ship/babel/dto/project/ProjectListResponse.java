@@ -33,7 +33,7 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .designerName(designer.getDesignerName())
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
-                .symbolName(symbol.getSymbolCode())
+                .symbolCode(symbol.getSymbolCode())
                 .file(akerImage.getAKERFile())
                 .imageCode(akerImage.getAKERCode())
                 .build();
