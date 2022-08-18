@@ -1,12 +1,10 @@
 package search.ship.babel.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 @Service
 public class FileService {
@@ -27,5 +25,10 @@ public class FileService {
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
+    }
+
+    public void uploadImg(String symbolName,String designerName,String imgName,MultipartFile multipartFile) throws Exception{
+        File saveFile=new File(root,imgName);
+        multipartFile.transferTo(saveFile);
     }
 }
