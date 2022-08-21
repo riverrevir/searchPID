@@ -2,11 +2,10 @@ package search.ship.babel.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import search.ship.babel.dto.FileDownloadRequest;
+import search.ship.babel.dto.FileUploadRequest;
 import search.ship.babel.service.FileService;
 
 import javax.servlet.http.HttpServletResponse;
@@ -22,5 +21,13 @@ public class FileController {
         String imgName = request.getImgName();
         String imgType = "JPG";
         fileService.downloadImg(imgName, imgType, response);
+    }
+
+    @PostMapping("/img/add")
+    public void uploadImage(@ModelAttribute FileUploadRequest request, @RequestPart MultipartFile file, HttpServletResponse response) throws Exception {
+        String symbolName= request.getSymbolName();
+        String designerName= request.getDesignerName();
+        String imgName= request.getImgName();
+        fileService.uploadImg(symbolName,designerName,imgName,file);
     }
 }
