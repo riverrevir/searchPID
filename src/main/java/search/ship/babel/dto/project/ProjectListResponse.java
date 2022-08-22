@@ -19,6 +19,8 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
     private LocalDateTime projectCreateAt;
     private String imageCode;
     private String file;
+    private String label;
+    private String shape;
 
     public static ProjectListResponse from(Project project){
         return ProjectListResponse.builder()
@@ -36,6 +38,8 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .symbolCode(symbol.getSymbolCode())
                 .file(akerImage.getAKERFile())
                 .imageCode(akerImage.getAKERCode())
+                .label(akerImage.getLabel())
+                .shape(akerImage.getShape())
                 .build();
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, DSMEImage dsmeImage){
@@ -49,6 +53,8 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .symbolCode(symbol.getSymbolCode())
                 .file(dsmeImage.getDSMEFile())
                 .imageCode(dsmeImage.getDSMECode())
+                .label(dsmeImage.getLabel())
+                .shape(dsmeImage.getShape())
                 .build();
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, KBRImage kbrImage){
@@ -62,6 +68,8 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .symbolCode(symbol.getSymbolCode())
                 .file(kbrImage.getKBRFile())
                 .imageCode(kbrImage.getKBRCode())
+                .label(kbrImage.getLabel())
+                .shape(kbrImage.getShape())
                 .build();
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, TECHNIPImage technipImage){
@@ -75,6 +83,8 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .symbolCode(symbol.getSymbolCode())
                 .file(technipImage.getTECHNIPFile())
                 .imageCode(technipImage.getTECHNIPCode())
+                .label(technipImage.getLabel())
+                .shape(technipImage.getShape())
                 .build();
     }
 

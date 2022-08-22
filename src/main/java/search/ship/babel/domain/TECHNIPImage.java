@@ -18,6 +18,12 @@ public class TECHNIPImage {
     @Column
     private String TECHNIPFile;
 
+    @Column
+    private String label;
+
+    @Column
+    private String shape;
+
     public TECHNIPImage(String TECHNIPCode, String symbolCode, String TECHNIPFile) {
         this.TECHNIPCode = TECHNIPCode;
         this.symbolCode = symbolCode;

@@ -18,6 +18,12 @@ public class DSMEImage {
     @Column
     private String DSMEFile;
 
+    @Column
+    private String label;
+
+    @Column
+    private String shape;
+
     public DSMEImage(String DSMECode, String symbolCode, String DSMEFile) {
         this.DSMECode = DSMECode;
         this.symbolCode = symbolCode;
