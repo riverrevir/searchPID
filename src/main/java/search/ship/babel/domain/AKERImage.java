@@ -18,6 +18,12 @@ public class AKERImage {
     @Column
     private String AKERFile;
 
+    @Column
+    private String label;
+
+    @Column
+    private String shape;
+
     public AKERImage(String AKERCode, String symbolCode, String AKERFile) {
         this.AKERCode = AKERCode;
         this.symbolCode = symbolCode;

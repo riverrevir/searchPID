@@ -18,6 +18,12 @@ public class KBRImage {
     @Column
     private String KBRFile;
 
+    @Column
+    private String label;
+
+    @Column
+    private String shape;
+
     public KBRImage(String KBRCode, String symbolCode, String KBRFile) {
         this.KBRCode = KBRCode;
         this.symbolCode = symbolCode;

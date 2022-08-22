@@ -11,6 +11,8 @@ public class DesignerImageListResponse {
     private String classificationName;
     private String symbolName;
     private String file;
+    private String label;
+    private String shape;
 
     public static DesignerImageListResponse from(AKERImage akerImage, Classification classification, Symbol symbol) {
         return DesignerImageListResponse.builder()
@@ -18,6 +20,8 @@ public class DesignerImageListResponse {
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
                 .file(akerImage.getAKERFile())
+                .label(akerImage.getLabel())
+                .shape(akerImage.getShape())
                 .build();
     }
 
@@ -27,6 +31,8 @@ public class DesignerImageListResponse {
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
                 .file(dsmeImage.getDSMEFile())
+                .label(dsmeImage.getLabel())
+                .shape(dsmeImage.getShape())
                 .build();
     }
 
@@ -36,6 +42,8 @@ public class DesignerImageListResponse {
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
                 .file(kbrImage.getKBRFile())
+                .label(kbrImage.getLabel())
+                .shape(kbrImage.getShape())
                 .build();
     }
 
@@ -45,6 +53,8 @@ public class DesignerImageListResponse {
                 .classificationName(classification.getClassificationName())
                 .symbolName(symbol.getSymbolName())
                 .file(technipImage.getTECHNIPFile())
+                .label(technipImage.getLabel())
+                .shape(technipImage.getShape())
                 .build();
     }
 }
