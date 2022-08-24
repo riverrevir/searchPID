@@ -21,6 +21,7 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
     private String file;
     private String label;
     private String shape;
+    private int order;
 
     public static ProjectListResponse from(Project project){
         return ProjectListResponse.builder()
@@ -40,6 +41,7 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .imageCode(akerImage.getAKERCode())
                 .label(akerImage.getLabel())
                 .shape(akerImage.getShape())
+                .order(akerImage.getSortingOrder())
                 .build();
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, DSMEImage dsmeImage){
@@ -55,6 +57,7 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .imageCode(dsmeImage.getDSMECode())
                 .label(dsmeImage.getLabel())
                 .shape(dsmeImage.getShape())
+                .order(dsmeImage.getSortingOrder())
                 .build();
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, KBRImage kbrImage){
@@ -70,6 +73,7 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .imageCode(kbrImage.getKBRCode())
                 .label(kbrImage.getLabel())
                 .shape(kbrImage.getShape())
+                .order(kbrImage.getSortingOrder())
                 .build();
     }
     public static ProjectListResponse from(Project project, Designer designer, Classification classification, Symbol symbol, TECHNIPImage technipImage){
@@ -85,6 +89,7 @@ public class ProjectListResponse implements Comparable<ProjectListResponse> {
                 .imageCode(technipImage.getTECHNIPCode())
                 .label(technipImage.getLabel())
                 .shape(technipImage.getShape())
+                .order(technipImage.getSortingOrder())
                 .build();
     }
 

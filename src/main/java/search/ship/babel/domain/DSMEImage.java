@@ -23,6 +23,8 @@ public class DSMEImage {
 
     @Column
     private String shape;
+    @Column(nullable = false)
+    private int sortingOrder=0;
 
     public DSMEImage(String DSMECode, String symbolCode, String DSMEFile) {
         this.DSMECode = DSMECode;

@@ -23,6 +23,8 @@ public class TECHNIPImage {
 
     @Column
     private String shape;
+    @Column(nullable = false)
+    private int sortingOrder=0;
 
     public TECHNIPImage(String TECHNIPCode, String symbolCode, String TECHNIPFile) {
         this.TECHNIPCode = TECHNIPCode;

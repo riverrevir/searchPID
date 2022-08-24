@@ -23,6 +23,8 @@ public class AKERImage {
 
     @Column
     private String shape;
+    @Column(nullable = false)
+    private int sortingOrder=0;
 
     public AKERImage(String AKERCode, String symbolCode, String AKERFile) {
         this.AKERCode = AKERCode;

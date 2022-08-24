@@ -13,6 +13,7 @@ public class DesignerImageListResponse {
     private String file;
     private String label;
     private String shape;
+    private int order;
 
     public static DesignerImageListResponse from(AKERImage akerImage, Classification classification, Symbol symbol) {
         return DesignerImageListResponse.builder()
@@ -22,6 +23,7 @@ public class DesignerImageListResponse {
                 .file(akerImage.getAKERFile())
                 .label(akerImage.getLabel())
                 .shape(akerImage.getShape())
+                .order(akerImage.getSortingOrder())
                 .build();
     }
 
@@ -33,6 +35,7 @@ public class DesignerImageListResponse {
                 .file(dsmeImage.getDSMEFile())
                 .label(dsmeImage.getLabel())
                 .shape(dsmeImage.getShape())
+                .order(dsmeImage.getSortingOrder())
                 .build();
     }
 
@@ -44,6 +47,7 @@ public class DesignerImageListResponse {
                 .file(kbrImage.getKBRFile())
                 .label(kbrImage.getLabel())
                 .shape(kbrImage.getShape())
+                .order(kbrImage.getSortingOrder())
                 .build();
     }
 
@@ -55,6 +59,7 @@ public class DesignerImageListResponse {
                 .file(technipImage.getTECHNIPFile())
                 .label(technipImage.getLabel())
                 .shape(technipImage.getShape())
+                .order(technipImage.getSortingOrder())
                 .build();
     }
 }

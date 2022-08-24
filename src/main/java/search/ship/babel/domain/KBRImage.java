@@ -23,6 +23,8 @@ public class KBRImage {
 
     @Column
     private String shape;
+    @Column(nullable = false)
+    private int sortingOrder=0;
 
     public KBRImage(String KBRCode, String symbolCode, String KBRFile) {
         this.KBRCode = KBRCode;
