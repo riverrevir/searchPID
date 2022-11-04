@@ -2,6 +2,7 @@ package search.ship.babel.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -26,6 +27,9 @@ public class DSMEImage {
     @Column(nullable = false)
     private int sortingOrder=0;
 
+    @ColumnDefault("0")
+    @Column(nullable = false)
+    private String unusedSymbol;
     public DSMEImage(String DSMECode, String symbolCode, String DSMEFile) {
         this.DSMECode = DSMECode;
         this.symbolCode = symbolCode;
