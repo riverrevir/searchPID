@@ -2,6 +2,7 @@ package search.ship.babel.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -25,6 +26,10 @@ public class TECHNIPImage {
     private String shape;
     @Column(nullable = false)
     private int sortingOrder=0;
+
+    @ColumnDefault("0")
+    @Column(nullable = false)
+    private String unusedSymbol;
 
     public TECHNIPImage(String TECHNIPCode, String symbolCode, String TECHNIPFile) {
         this.TECHNIPCode = TECHNIPCode;
